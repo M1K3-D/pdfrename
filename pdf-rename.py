@@ -11,13 +11,13 @@
 # You also need pdf Python module to use pyPdf
 # sudo pip install pdf
 
-from pyPdf import PdfFileReader
+from PyPDF4 import PdfFileReader
 import os
 import re
 
 # Retrive all the files from the current directory
 for fileName in os.listdir('.'):
-    try:
+#    try:
         # Process nly the pdf files.
         if fileName.lower()[-3:] != "pdf":
             continue
@@ -26,7 +26,7 @@ for fileName in os.listdir('.'):
         print("Processing " + fileName)
 
         # Retrive the Title of the pdf.
-        pdfReader = PdfFileReader(file(fileName, "rb"))
+        pdfReader = PdfFileReader(open(fileName, 'rb'))
         title = pdfReader.getDocumentInfo().title
         # close the pdf
         pdfReader.stream.close()
@@ -40,11 +40,13 @@ for fileName in os.listdir('.'):
             print("Title: " + title)
 
             # Format the Title by removing any special characters.
-            newName = re.sub('[^-a-zA-Z0-9_.() ]+', '', title) + ".pdf"
+            newName = title + ".pdf"
+#           newName = re.sub('[^-a-zA-Z0-9_.() ]+', '', title) + ".pdf"
+            print("newname: " + newName)
 
             # Ask the user for confirmation because sometimes the Title
             # information can be wrong.
-            option = raw_input("Do you want to rename '" + fileName + "'' to '" + newName + "'? [y][n]: ")
+            option = input("Do you want to rename " + fileName + " to " + newName + "? [y][n]: ")
             option = option.lower()
 
             # If user really wants to rename the file, rename it.
@@ -53,5 +55,5 @@ for fileName in os.listdir('.'):
 
         # Print an empty line.
         print("")
-    except:
-        print("Error in processing: " + fileName)
+#    except:
+#        print("Error in processing: " + fileName)

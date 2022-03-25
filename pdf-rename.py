@@ -23,7 +23,7 @@ for fileName in os.listdir('.'):
             continue
 
         # Print the file name.
-        print("Processing " + fileName)
+        print("Processing: " + fileName)
 
         # Retrive the Title of the pdf.
         pdfReader = PdfFileReader(open(fileName, 'rb'))
@@ -46,12 +46,12 @@ for fileName in os.listdir('.'):
 
             # Ask the user for confirmation because sometimes the Title
             # information can be wrong.
-            option = input("Do you want to rename " + fileName + " to " + newName + "? [y][n]: ")
-            option = option.lower()
+#            option = input("Do you want to rename " + fileName + " to " + newName + "? [y][n]: ")
+#            option = option.lower()
 
             # If user really wants to rename the file, rename it.
-            if(option.startswith('y')):
-                os.rename(fileName, newName)
+#            if(option.startswith('y')):
+            os.rename(fileName, newName)
 
         # Print an empty line.
         print("")

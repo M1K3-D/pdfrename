@@ -1,0 +1,1 @@
+python3 /Users/mdufosse/Documents/AData/Dev/Python/Prog/pdfrename/pdf-rename.py
